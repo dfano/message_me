@@ -1,60 +1,48 @@
 <h4 class="ui center aligned medium icon header">
   <i class="circular orange coffee icon"></i>
-  Say Something
+  Say Something test
 </h4>
-
 
 <div class="ui two column grid">
 
 	<div class="twelve wide column">
 
 		<div class="ui card fluid raised chatbox">
-  			<div class="content">
+  			<div class="content" id="messages">
 
-				<div class="ui feed">
-				  <div class="event">
-				    <div class="content">
-				      <div class="summary">
-				         <em>Elliot Fu:</em> added <a>Jenny Hess</a> as a friend
-				      </div>
-				    </div>
-				  </div>
-				  <div class="event">
-				    <div class="content">
-				      <div class="summary">
-				         <em>Stevie Feliciano:</em> added <a>Elliot Fu</a> as a friend
-				      </div>
-				    </div>
-				  </div>
-				  <div class="event">
-				    <div class="content">
-				      <div class="summary">
-				         <em>Helen Troy:</em> added <a>Christian Rocha</a> as a friend
-				      </div>
-				    </div>
-				  </div>
-				  <div class="event">
-				    <div class="content">
-				      <div class="summary">
-				         <em>Christian Rocha:</em> signed up for the  site.
-				      </div>
-				    </div>
-				  </div>
+				<div class="ui feed" id="message-container">
+
+					<%= render @messages %>
+					
 				</div>
+
 			</div>
+
+			<!-- this is the text box on the chat window --> 
 			<div class="extra content">
-				<form class="ui reply form">
+
+				
+				<%= form_for(@message, html: {class: "ui reply form", role: "form"}, url: message_path, remote: true) do |f| %>
+				
 				    <div class="field">
 				      	<div class="ui fluid icon input">
-				      		<input type="text" placeholder="Enter message...">
-					      	<i class="bordered inverted edit orange icon"></i>
+				      		<%= f.text_field :body %>
+				      		<%= f.button '<i class="bordered inverted edit orange icon"></i>'.html_safe %>
+					      	
 					    </div>
 				    </div>
+			    <% end %>
 				    
-			  	</form>
+			  	
+
+		
+
+
 				
 			</div>
-		</div>
+		</div> <!-- this is the end of the content -->
+
+
 
 
 
